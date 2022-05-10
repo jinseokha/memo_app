@@ -11,6 +11,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Memo">
         <activity
+            android:name=".view.EditActivity"
+            android:exported="true" />
+        <activity
             android:name=".view.MainActivity"
             android:exported="true">
             <intent-filter>

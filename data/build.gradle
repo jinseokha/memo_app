@@ -9,7 +9,6 @@ android {
     compileSdk = AppConfig.compileSdk
 
     defaultConfig {
-        applicationId "com.devseok.memo"
         minSdk = AppConfig.minSdk
         targetSdk = AppConfig.targetSdk
         versionCode = AppConfig.versionCode

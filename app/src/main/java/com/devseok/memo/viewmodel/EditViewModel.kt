@@ -1,6 +1,5 @@
 package com.devseok.memo.viewmodel
 
-import androidx.lifecycle.LiveData
 import com.devseok.data.model.Memo
 import com.devseok.data.usecase.MemoRepoUseCase
 import com.devseok.memo.base.BaseViewModel
@@ -14,22 +13,22 @@ import javax.inject.Inject
 /**
  * @author Ha Jin Seok
  * @email seok270@dahami.com
- * @created 2022-05-03
+ * @created 2022-05-10
  * @desc
  */
 @HiltViewModel
-class MainViewModel @Inject constructor(
+class EditViewModel @Inject constructor(
     private val memoRepoUseCase: MemoRepoUseCase
 ) : BaseViewModel() {
 
-    val isGetAllMemo = SingleLiveEvent<LiveData<MutableList<Memo>>>()
+    val isInsertMemo = SingleLiveEvent<Long>()
 
-
-    fun getMemo() {
+    fun insertMemo(memo : Memo) {
         CoroutineScope(Dispatchers.IO).launch {
-            memoRepoUseCase.getAllMemo().let {
-                isGetAllMemo.postValue(it)
+            memoRepoUseCase.insertMemo(memo).let {
+                isInsertMemo.postValue(it)
             }
         }
     }
+
 }

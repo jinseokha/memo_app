@@ -2,6 +2,7 @@ package com.devseok.data.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import java.util.*
 
 /**
  * @author Ha Jin Seok
@@ -10,11 +11,14 @@ import androidx.room.PrimaryKey
  * @desc ROOM DB Class
  */
 @Entity
-class Memo (
+data class Memo (
     @PrimaryKey(autoGenerate = true)
-    var id : Long,
+    var id : Long?,
     var memo : String,
     var editMode : Boolean,
     var secretMode : Boolean, // secret Mode
-    var secretPassWord : String
-)
+    var secretPassWord : String,
+    var update_time : String
+) {
+
+}

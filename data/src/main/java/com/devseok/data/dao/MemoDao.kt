@@ -1,5 +1,6 @@
 package com.devseok.data.dao
 
+import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.devseok.data.model.Memo
 
@@ -23,8 +24,8 @@ interface MemoDao {
     suspend fun deleteMemoById(id : Long)
 
     @Query("SELECT * FROM Memo")
-    suspend fun getAllMemo() : List<Memo>
+    fun getAllMemo() : LiveData<MutableList<Memo>>
 
-
+    @Query("UPDATE Memo SET memo = :memo WHERE id = :id")
     suspend fun modifyMemo(id: Long, memo: String)
 }
