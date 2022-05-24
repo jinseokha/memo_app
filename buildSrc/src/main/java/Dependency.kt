@@ -3,7 +3,7 @@ import org.gradle.api.publish.internal.versionmapping.VersionMappingStrategyInte
 
 /**
  * @author Ha Jin Seok
- * @email seok270@dahami.com
+ * @email seok270@gmail.com
  * @created 2022-05-03
  * @desc
  */
@@ -42,4 +42,19 @@ object ROOM {
     const val ROOM_RUNTIME = "androidx.room:room-runtime:${Versions.ROOM_DB}"
     const val ROOM_COMPILER = "androidx.room:room-compiler:${Versions.ROOM_DB}"
     const val ROOM_KTX = "androidx.room:room-ktx:${Versions.ROOM_DB}"
+}
+
+object Custom {
+    const val colorPicker = "com.github.dhaval2404:colorpicker:2.0"
+    const val circleImage = "de.hdodenhof:circleimageview:3.1.0"
+}
+
+object Firebase {
+    const val firebase_Bom = "com.google.firebase:firebase-bom:30.0.1"
+    const val firebase_Analytics = "com.google.firebase:firebase-analytics-ktx"
+    const val firebase_Crashlytics = "com.google.firebase:firebase-crashlytics-ktx"
+}
+
+object Adb {
+    const val ads = "com.google.android.gms:play-services-ads:20.6.0"
 }

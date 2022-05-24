@@ -1,5 +1,7 @@
 plugins {
     id 'com.android.application'
+    id 'com.google.gms.google-services'
+    id 'com.google.firebase.crashlytics'
     id 'kotlin-android'
     id 'kotlin-kapt'
     id 'dagger.hilt.android.plugin'
@@ -77,4 +79,16 @@ dependencies {
     implementation (ROOM.ROOM_RUNTIME)
     kapt (ROOM.ROOM_COMPILER)
     implementation (ROOM.ROOM_KTX)
+
+    // Custom
+    implementation (Custom.colorPicker)
+    implementation (Custom.circleImage)
+
+    // Firebase
+    implementation platform (Firebase.firebase_Bom)
+    implementation (Firebase.firebase_Crashlytics)
+    implementation (Firebase.firebase_Analytics)
+
+    // Admob
+    implementation (Adb.ads)
 }

@@ -10,7 +10,7 @@ import java.util.concurrent.atomic.AtomicBoolean
 
 /**
  * @author Ha Jin Seok
- * @email seok270@dahami.com
+ * @email seok270@gmail.com
  * @created 2022-05-03
  * @desc
  */

@@ -6,7 +6,7 @@ import javax.inject.Inject
 
 /**
  * @author Ha Jin Seok
- * @email seok270@dahami.com
+ * @email seok270@gmail.com
  * @created 2022-05-10
  * @desc
  */
@@ -16,11 +16,13 @@ class MemoRepoUseCase @Inject constructor(
 
     fun getAllMemo() = memoDao.getAllMemo()
 
+    fun getMemo(memo : String) = memoDao.getMemo(memo)
+
     suspend fun insertMemo(memo : Memo) = memoDao.insertMemo(memo)
 
     suspend fun deleteMemo(memo : Memo) = memoDao.deleteMemo(memo)
 
     suspend fun deleteMemoById(id: Long) = memoDao.deleteMemoById(id)
 
-    suspend fun modifyMemo(id : Long, memo : String) = memoDao.modifyMemo(id, memo)
+    suspend fun modifyMemo(memo: Memo) = memoDao.modifyMemo(memo)
 }

@@ -10,4 +10,7 @@
     <color name="gray">#756E6E</color>
     <color name="gray1">#F7F8FA</color>
     <color name="test">#0069F1</color>
+    <color name="text_gray">#B9B1B1</color>
+    <color name="fab_background">#7695E9</color>
+    <color name="icon">#454544</color>
 </resources>

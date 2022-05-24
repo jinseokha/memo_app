@@ -6,7 +6,7 @@ import com.devseok.data.model.Memo
 
 /**
  * @author Ha Jin Seok
- * @email seok270@dahami.com
+ * @email seok270@gmail.com
  * @created 2022-05-03
  * @desc
  */
@@ -26,6 +26,9 @@ interface MemoDao {
     @Query("SELECT * FROM Memo")
     fun getAllMemo() : LiveData<MutableList<Memo>>
 
-    @Query("UPDATE Memo SET memo = :memo WHERE id = :id")
-    suspend fun modifyMemo(id: Long, memo: String)
+    @Query("SELECT * FROM Memo WHERE memo LIKE '%' || :memo || '%'")
+    fun getMemo(memo : String) : LiveData<MutableList<Memo>>
+
+    @Update
+    suspend fun modifyMemo(vararg memo : Memo)
 }

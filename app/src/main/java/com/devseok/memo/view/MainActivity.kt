@@ -1,5 +1,10 @@
 package com.devseok.memo.view
 
+import android.animation.ObjectAnimator
+import android.content.Intent
+import android.net.Uri
+import android.util.Log
+import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.lifecycle.Observer
@@ -11,6 +16,10 @@ import com.devseok.memo.base.BaseActivity
 import com.devseok.memo.databinding.ActivityMainBinding
 import com.devseok.memo.viewmodel.MainViewModel
 import com.devseok.memo.widget.extension.startActivityWith
+import com.google.android.gms.ads.AdListener
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.LoadAdError
+import com.google.android.gms.ads.MobileAds
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -25,9 +34,12 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
     override fun init() {
         binding.activity = this
 
+        MobileAds.initialize(this) { }
+
         getMemo()
         initObserver()
         initListener()
+        adb()
     }
 
     override fun onBackPressed() {
@@ -38,6 +50,50 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
             finish()
     }
 
+    override fun onPause() {
+        binding.adView.pause()
+        super.onPause()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        binding.adView.resume()
+    }
+
+    override fun onDestroy() {
+        binding.adView.destroy()
+        super.onDestroy()
+    }
+
+    private fun adb() {
+        val adRequest = AdRequest.Builder().build()
+        binding.adView.loadAd(adRequest)
+
+        binding.adView.adListener = object : AdListener() {
+            override fun onAdLoaded() {
+                // Code to be executed when an ad finishes loading.
+            }
+
+            override fun onAdFailedToLoad(adError : LoadAdError) {
+                // Code to be executed when an ad request fails.
+                Log.d("test", "" + adError)
+            }
+
+            override fun onAdOpened() {
+                // Code to be executed when an ad opens an overlay that
+                // covers the screen.
+            }
+
+            override fun onAdClicked() {
+                // Code to be executed when the user clicks on an ad.
+            }
+
+            override fun onAdClosed() {
+                // Code to be executed when the user is about to return
+                // to the app after tapping on an ad.
+            }
+        }
+    }
 
     private fun initObserver() {
         mainViewModel.isGetAllMemo.observe(this, {
@@ -49,22 +105,32 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
     }
 
     private fun initRecyclerView() {
-        memoAdapter = MemoAdapter(baseContext, memoList, mainViewModel)
+        memoAdapter = MemoAdapter(this, memoList, mainViewModel)
         binding.recyclerView.adapter = memoAdapter
         binding.recyclerView.layoutManager = LinearLayoutManager(baseContext)
     }
 
     private fun initListener() {
-        binding.ivEdit.setOnClickListener {
+
+
+        binding.ivAdd.setOnClickListener {
             startActivityWith(baseContext, EditActivity::class.java)
+            overridePendingTransition(R.anim.anim_slide_in_left, R.anim.anim_slide_out_left)
+        }
+
+        binding.ivContact.setOnClickListener {
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://forms.gle/ZqzNtNN3RUJEG2fU7"))
+            startActivity(intent)
         }
 
         binding.ivSearch.setOnClickListener {
-
+            startActivityWith(baseContext, SearchActivity::class.java)
         }
     }
 
     private fun getMemo() {
         mainViewModel.getMemo()
     }
+
+
 }
