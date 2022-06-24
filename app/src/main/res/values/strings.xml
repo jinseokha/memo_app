@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">간단 메모장</string>
+
+    <string name="adView">testAddKey</string>
 </resources>
