@@ -16,30 +16,48 @@
         android:paddingRight="20dp"
         tools:context=".view.MainActivity">
 
-        <androidx.appcompat.widget.AppCompatImageView
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginTop="20dp"
+            android:text="간단 메모장"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+
+        <!--<androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/iv_contact"
             android:layout_width="28dp"
             android:layout_height="28dp"
             android:layout_alignParentLeft="true"
             android:layout_marginTop="20dp"
-            android:src="@drawable/ic_baseline_contact_mail_24" />
+            android:src="@drawable/ic_baseline_contact_mail_24" />-->
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/iv_add"
             android:layout_width="28dp"
             android:layout_height="28dp"
+            android:layout_toLeftOf="@id/iv_setting"
+            android:layout_marginRight="10dp"
             android:layout_marginTop="20dp"
+            android:src="@drawable/baseline_note_add_24" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_setting"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
             android:layout_alignParentRight="true"
-            android:src="@drawable/ic_baseline_note_add_24"/>
+            android:layout_marginTop="20dp"
+            android:src="@drawable/baseline_settings_24"/>
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/iv_search"
             android:layout_width="28dp"
             android:layout_height="28dp"
-            android:layout_toLeftOf="@id/iv_add"
-            android:layout_marginRight="10dp"
             android:layout_marginTop="20dp"
-            android:src="@drawable/ic_baseline_search_24" />
+            android:layout_marginRight="10dp"
+            android:layout_toLeftOf="@id/iv_add"
+            android:src="@drawable/baseline_search_24" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"

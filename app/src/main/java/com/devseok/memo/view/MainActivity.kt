@@ -118,10 +118,10 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
             overridePendingTransition(R.anim.anim_slide_in_left, R.anim.anim_slide_out_left)
         }
 
-        binding.ivContact.setOnClickListener {
+        /*binding.1ivContact.setOnClickListener {
             val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://forms.gle/ZqzNtNN3RUJEG2fU7"))
             startActivity(intent)
-        }
+        }*/
 
         binding.ivSearch.setOnClickListener {
             startActivityWith(baseContext, SearchActivity::class.java)
