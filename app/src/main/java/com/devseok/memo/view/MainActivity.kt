@@ -112,12 +112,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
 
     private fun initListener() {
 
-
-        binding.ivAdd.setOnClickListener {
-            startActivityWith(baseContext, EditActivity::class.java)
-            overridePendingTransition(R.anim.anim_slide_in_left, R.anim.anim_slide_out_left)
-        }
-
         /*binding.1ivContact.setOnClickListener {
             val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://forms.gle/ZqzNtNN3RUJEG2fU7"))
             startActivity(intent)
@@ -130,6 +124,16 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
 
     private fun getMemo() {
         mainViewModel.getMemo()
+    }
+
+    fun goEditActivity(view: View) {
+        startActivityWith(baseContext, EditActivity::class.java)
+        overridePendingTransition(R.anim.anim_slide_in_left, R.anim.anim_slide_out_left)
+    }
+
+    fun goSettingActivity(view: View) {
+        startActivityWith(baseContext, SettingActivity::class.java)
+        overridePendingTransition(R.anim.anim_slide_in_left, R.anim.anim_slide_out_left)
     }
 
 

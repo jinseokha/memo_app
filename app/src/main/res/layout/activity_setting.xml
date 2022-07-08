@@ -26,11 +26,11 @@
         <androidx.appcompat.widget.AppCompatTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/imageView_back"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="20dp"
+            android:layout_toRightOf="@id/imageView_back"
             android:text="설정"
-            android:textColor="@color/black"
+            android:textColor="@color/text_black"
             android:textSize="18sp" />
 
         <LinearLayout
@@ -44,7 +44,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:textColor="@color/black"
+                android:textColor="@color/text_black"
                 android:textSize="16sp"
                 android:text="업데이트 내역"/>
 
@@ -62,7 +62,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:textColor="@color/black"
+                android:textColor="@color/text_black"
                 android:textSize="16sp"
                 android:text="버전정보"/>
 
@@ -90,7 +90,7 @@
         <LinearLayout
             android:id="@+id/layout_output"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_marginTop="20dp"
             android:layout_below="@id/view_1">
@@ -99,14 +99,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:textColor="@color/black"
+                android:textColor="@color/text_black"
                 android:textSize="16sp"
                 android:text="목록 양식"/>
 
             <RadioGroup
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="15dp"
                 android:gravity="center"
                 android:orientation="horizontal">
 
@@ -137,30 +137,51 @@
 
             </RadioGroup>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:orientation="horizontal">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:src="@drawable/ic_splitscreen"/>
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:src="@drawable/ic_window"/>
+            </LinearLayout>
+
         </LinearLayout>
 
         <RelativeLayout
             android:id="@+id/layout_theme"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:layout_marginTop="20dp"
-            android:layout_below="@id/layout_output">
+            android:layout_below="@id/layout_output"
+            android:layout_marginTop="25dp">
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:textColor="@color/black"
-                android:textSize="16sp"
-                android:text="다크 테마"/>
+                android:text="다크 테마"
+                android:textColor="@color/text_black"
+                android:textSize="16sp" />
 
-            <Switch
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/switch_dark"
                 android:layout_width="wrap_content"
                 android:layout_height="26dp"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:track="@drawable/switch_track_selector"
-                android:thumb="@drawable/switch_thumb"/>
+                android:onCheckedChanged="@{activity::darkModeChange}"
+                android:thumb="@drawable/switch_thumb"
+                android:track="@drawable/switch_track_selector" />
 
         </RelativeLayout>
 
@@ -178,14 +199,14 @@
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_below="@id/view_2"
-            android:layout_marginTop="20dp">
+            android:layout_marginTop="10dp">
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:text="문의하기"
-                android:textColor="@color/black"
+                android:textColor="@color/text_black"
                 android:textSize="16sp" />
 
         </LinearLayout>
@@ -201,7 +222,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:textColor="@color/black"
+                android:textColor="@color/text_black"
                 android:textSize="16sp"
                 android:text="오픈소스 라이선스"/>
 
