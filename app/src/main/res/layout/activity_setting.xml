@@ -20,14 +20,14 @@
             android:id="@+id/imageView_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="50dp"
             android:src="@drawable/ic_baseline_arrow_back_24" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="50dp"
             android:layout_toRightOf="@id/imageView_back"
             android:text="설정"
             android:textColor="@color/text_black"
@@ -37,7 +37,7 @@
             android:id="@+id/layout_update"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="30dp"
             android:layout_below="@id/imageView_back">
 
             <androidx.appcompat.widget.AppCompatTextView
@@ -106,7 +106,7 @@
             <RadioGroup
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="20dp"
                 android:gravity="center"
                 android:orientation="horizontal">
 
@@ -163,7 +163,7 @@
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_below="@id/layout_output"
-            android:layout_marginTop="25dp">
+            android:layout_marginTop="30dp">
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="wrap_content"
@@ -179,6 +179,7 @@
                 android:layout_height="26dp"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
+                android:checked="@{activity.prefs.isDarkModeEnabled}"
                 android:onCheckedChanged="@{activity::darkModeChange}"
                 android:thumb="@drawable/switch_thumb"
                 android:track="@drawable/switch_track_selector" />
@@ -199,7 +200,8 @@
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_below="@id/view_2"
-            android:layout_marginTop="10dp">
+            android:layout_marginTop="10dp"
+            android:onClick="@{activity::contact}">
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="wrap_content"
@@ -216,7 +218,8 @@
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginTop="20dp"
-            android:layout_below="@id/layout_contact">
+            android:layout_below="@id/layout_contact"
+            android:onClick="@{activity::openLicenseActivity}">
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="wrap_content"

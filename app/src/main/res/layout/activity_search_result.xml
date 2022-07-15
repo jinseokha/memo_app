@@ -12,7 +12,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingTop="26dp"
+        android:paddingTop="50dp"
         android:paddingLeft="20dp"
         android:paddingRight="20dp"
         tools:context=".view.SearchResultActivity">

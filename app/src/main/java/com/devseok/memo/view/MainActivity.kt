@@ -31,6 +31,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
 
     private var waitTime = 0L
 
+
     override fun init() {
         binding.activity = this
 

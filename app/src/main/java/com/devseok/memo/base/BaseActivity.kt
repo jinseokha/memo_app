@@ -6,6 +6,9 @@ import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
+import com.devseok.memo.widget.presistence.Preferences
+import com.devseok.memo.widget.utils.CustomBar
+import com.devseok.memo.widget.utils.ThemeDarkManager
 
 /**
  * @author Ha Jin Seok
@@ -17,11 +20,23 @@ abstract class BaseActivity<T : ViewDataBinding>(@LayoutRes private val layoutRe
     AppCompatActivity() {
     protected lateinit var binding: T
     private var waitTime = 0L
+    lateinit var prefs : Preferences
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, layoutResId)
+        prefs = Preferences(this)
+        CustomBar.setStatusBarTransparent(this)
         init()
+        darkMode()
+    }
+
+    fun darkMode() {
+        if (prefs.isDarkModeEnabled)
+            ThemeDarkManager.applyTheme(ThemeDarkManager.ThemeMode.DARK)
+        else
+            ThemeDarkManager.applyTheme(ThemeDarkManager.ThemeMode.LIGHT)
     }
 
     abstract fun init()

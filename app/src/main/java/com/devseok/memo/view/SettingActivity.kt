@@ -1,8 +1,11 @@
 package com.devseok.memo.view
 
+import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
+import android.view.View
 import android.widget.CompoundButton
 import androidx.activity.viewModels
 import com.devseok.data.model.Memo
@@ -10,6 +13,9 @@ import com.devseok.memo.R
 import com.devseok.memo.base.BaseActivity
 import com.devseok.memo.databinding.ActivitySettingBinding
 import com.devseok.memo.viewmodel.SettingViewModel
+import com.devseok.memo.widget.extension.startActivityWith
+import com.devseok.memo.widget.presistence.Preferences
+import com.devseok.memo.widget.utils.CustomBar
 import com.devseok.memo.widget.utils.ThemeDarkManager
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -17,9 +23,13 @@ import dagger.hilt.android.AndroidEntryPoint
 class SettingActivity : BaseActivity<ActivitySettingBinding>(R.layout.activity_setting) {
     private val settingViewModel by viewModels<SettingViewModel>()
 
+    private val appVersion = "1.0.0"
+
     override fun init() {
         binding.activity = this
 
+        appVersionChecking()
+        initListener()
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -34,32 +44,52 @@ class SettingActivity : BaseActivity<ActivitySettingBinding>(R.layout.activity_s
         withFinish()
     }
 
-    private fun withFinish() {
-
-        finish()
-        overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_slide_out_right)
-
-        /*if (binding.editText.text.toString().trim().isEmpty().not()) {
-
-            val memo = Memo(id = null, memo = binding.editText.text.toString(), editMode = false,
-                secretMode = false, secretPassWord = "", secretEnabled = false,
-                color = fiXcolor, mode = false, convertTimestampToDate(System.currentTimeMillis()))
-            editViewModel.insertMemo(memo)
-        } else {
-            finish()
-            overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_slide_out_right)
-        }*/
+    private fun initListener() {
+        binding.imageViewBack.setOnClickListener {
+            withFinish()
+        }
     }
 
+    private fun withFinish() {
+        finish()
+        overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_slide_out_right)
+    }
+
+    private fun appVersionChecking() {
+        settingViewModel.checkAppVersion()
+            .addOnSuccessListener {
+                if (appVersion == it.value) {
+                    binding.tvVersion.text = "최신 버전"
+                } else {
+                    binding.tvVersion.text = "추가 업데이트 버전이 있습니다."
+                }
+            }
+            .addOnFailureListener {
+                shortShowToast("오류가 발생했습니다. 오류코드 - ${it.message}")
+
+            }
+    }
 
     fun darkModeChange(buttonView: CompoundButton, isChecked: Boolean) {
 
         if (isChecked) {
             binding.switchDark.isChecked = true
-            ThemeDarkManager.applyTheme(ThemeDarkManager.ThemeMode.DARK)
+            prefs.isDarkModeEnabled = true
         } else {
             binding.switchDark.isChecked = false
-            ThemeDarkManager.applyTheme(ThemeDarkManager.ThemeMode.LIGHT)
+            prefs.isDarkModeEnabled = false
         }
+        darkMode()
     }
+
+    fun contact(view : View) {
+        val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://forms.gle/ZqzNtNN3RUJEG2fU7"))
+        startActivity(intent)
+    }
+
+    fun openLicenseActivity(view: View) {
+        startActivityWith(baseContext, OpenLicenseActivity::class.java)
+        overridePendingTransition(R.anim.anim_slide_in_left, R.anim.anim_slide_out_left)
+    }
+
 }

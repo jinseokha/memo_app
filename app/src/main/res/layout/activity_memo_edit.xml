@@ -12,7 +12,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingTop="25dp"
+        android:paddingTop="50dp"
         android:orientation="vertical"
         tools:context=".view.EditActivity">
 
@@ -20,10 +20,10 @@
             android:id="@+id/imageView_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginRight="18dp"
             android:paddingLeft="20dp"
             android:paddingRight="15dp"
-            android:layout_marginRight="18dp"
-            android:src="@drawable/ic_baseline_arrow_back_24"/>
+            android:src="@drawable/ic_baseline_arrow_back_24" />
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/iv_lock"
@@ -90,15 +90,16 @@
             android:id="@+id/editText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_below="@id/imageView_back"
             android:layout_marginTop="20dp"
+            android:background="@null"
+            android:hint="내용 입력"
+            android:lineHeight="21sp"
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
             android:textCursorDrawable="@drawable/color_cursor"
-            android:layout_below="@id/imageView_back"
-            android:background="@null"
-            android:lineHeight="21sp"
-            android:textSize="16sp"
-            android:hint="내용 입력"/>
+            android:textColor="@color/text_black"
+            android:textSize="16sp" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/edt_count"

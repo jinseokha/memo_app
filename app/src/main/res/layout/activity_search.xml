@@ -12,7 +12,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingTop="26dp"
+        android:paddingTop="50dp"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
         tools:context=".view.SearchActivity">
@@ -28,24 +28,26 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:layout_marginRight="8dp"
                 android:layout_marginLeft="15dp"
+                android:layout_marginRight="8dp"
                 android:src="@drawable/ic_baseline_search_24" />
 
             <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/edt_search"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:textCursorDrawable="@drawable/color_cursor"
-                android:focusableInTouchMode="true"
+                android:layout_toLeftOf="@id/iv_delete"
+                android:layout_toRightOf="@id/iv_search"
                 android:background="@null"
-                android:maxLines="1"
-                android:textSize="15sp"
+                android:focusableInTouchMode="true"
+                android:hint="검색어를 입럭하세요"
+                android:textColorHint="@color/gray"
                 android:imeOptions="actionSearch"
                 android:inputType="text"
-                android:hint="검색어를 입럭하세요"
-                android:layout_toRightOf="@id/iv_search"
-                android:layout_toLeftOf="@id/iv_delete" />
+                android:maxLines="1"
+                android:textCursorDrawable="@drawable/color_cursor"
+                android:textSize="15sp"
+                android:textColor="@color/black"/>
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/iv_delete"

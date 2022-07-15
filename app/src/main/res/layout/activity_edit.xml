@@ -12,7 +12,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingTop="35dp"
+        android:paddingTop="50dp"
         android:paddingLeft="15dp"
         android:paddingRight="15dp"
         android:orientation="vertical"
@@ -44,13 +44,14 @@
             android:id="@+id/editText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
             android:layout_below="@id/imageView_back"
-            android:textCursorDrawable="@drawable/color_cursor"
+            android:layout_marginTop="30dp"
             android:background="@null"
+            android:hint="내용 입력"
             android:lineHeight="21sp"
+            android:textCursorDrawable="@drawable/color_cursor"
             android:textSize="16sp"
-            android:hint="내용 입력"/>
+            android:textColor="@color/text_black"/>
 
         <com.google.android.gms.ads.AdView
             android:id="@+id/adView"

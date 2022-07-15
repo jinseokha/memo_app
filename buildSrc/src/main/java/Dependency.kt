@@ -53,6 +53,8 @@ object Firebase {
     const val firebase_Bom = "com.google.firebase:firebase-bom:30.0.1"
     const val firebase_Analytics = "com.google.firebase:firebase-analytics-ktx"
     const val firebase_Crashlytics = "com.google.firebase:firebase-crashlytics-ktx"
+    const val firebase_Database = "com.google.firebase:firebase-database-ktx:20.0.3"
+    const val firebase_FireStore = "com.google.firebase:firebase-firestore-ktx:24.0.1"
 }
 
 object Adb {

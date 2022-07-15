@@ -35,6 +35,8 @@ android {
 
 dependencies {
 
+    implementation project(':domain')
+
     // AndroidX
     implementation (AndroidX.APP_COMPAT)
     implementation (AndroidX.MATERIAL)
@@ -56,4 +58,11 @@ dependencies {
     implementation (ROOM.ROOM_RUNTIME)
     kapt (ROOM.ROOM_COMPILER)
     implementation (ROOM.ROOM_KTX)
+
+    // Firebase
+    implementation platform (Firebase.firebase_Bom)
+    implementation (Firebase.firebase_Crashlytics)
+    implementation (Firebase.firebase_Analytics)
+    implementation (Firebase.firebase_Database)
+    implementation (Firebase.firebase_FireStore)
 }

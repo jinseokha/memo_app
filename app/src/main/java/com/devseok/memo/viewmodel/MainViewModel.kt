@@ -3,6 +3,7 @@ package com.devseok.memo.viewmodel
 import androidx.lifecycle.LiveData
 import com.devseok.data.model.Memo
 import com.devseok.data.usecase.MemoRepoUseCase
+import com.devseok.domain.usecase.CheckAppVersionUseCase
 import com.devseok.memo.base.BaseViewModel
 import com.devseok.memo.widget.utils.SingleLiveEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -19,11 +20,13 @@ import javax.inject.Inject
  */
 @HiltViewModel
 class MainViewModel @Inject constructor(
-    private val memoRepoUseCase: MemoRepoUseCase
+    private val memoRepoUseCase: MemoRepoUseCase,
+    private val checkAppVersionUseCase : CheckAppVersionUseCase
 ) : BaseViewModel() {
 
     val isGetAllMemo = SingleLiveEvent<LiveData<MutableList<Memo>>>()
 
+    fun checkAppVersion() = checkAppVersionUseCase.execute()
 
     fun getMemo() {
         CoroutineScope(Dispatchers.IO).launch {

@@ -20,6 +20,7 @@ import com.devseok.memo.R
 import com.devseok.memo.base.BaseActivity
 import com.devseok.memo.databinding.ActivityEditBinding
 import com.devseok.memo.viewmodel.EditViewModel
+import com.devseok.memo.widget.utils.CustomBar
 import com.github.dhaval2404.colorpicker.ColorPickerDialog
 import com.github.dhaval2404.colorpicker.model.ColorShape
 import com.google.android.gms.ads.AdListener

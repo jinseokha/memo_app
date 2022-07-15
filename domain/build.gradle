@@ -1,0 +1,66 @@
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
+}
+
+android {
+    compileSdk = AppConfig.compileSdk
+
+    defaultConfig {
+        minSdk = AppConfig.minSdk
+        targetSdk = AppConfig.targetSdk
+        versionCode = AppConfig.versionCode
+        versionName = AppConfig.versionName
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+
+    // AndroidX
+    implementation (AndroidX.APP_COMPAT)
+    implementation (AndroidX.MATERIAL)
+
+    implementation (KTX.KTX_CORE)
+
+    // TEST
+    testImplementation (TEST.JUNIT_VERSION)
+    androidTestImplementation (TEST.JUNIT)
+    androidTestImplementation (TEST.ESPRESSO_CORE)
+
+    // dagger hilt
+    implementation (DaggerHilt.DAGGER_HILT)
+    kapt (DaggerHilt.DAGGER_HILT_COMPILER)
+    implementation (DaggerHilt.DAGGER_HILT_VIEW_MODEL)
+    kapt (DaggerHilt.DAGGER_HILT_ANDROIDX_COMPILER)
+
+    // ROOM DB
+    implementation (ROOM.ROOM_RUNTIME)
+    kapt (ROOM.ROOM_COMPILER)
+    implementation (ROOM.ROOM_KTX)
+
+    // Firebase
+    implementation platform (Firebase.firebase_Bom)
+    implementation (Firebase.firebase_Crashlytics)
+    implementation (Firebase.firebase_Analytics)
+    implementation (Firebase.firebase_Database)
+    implementation (Firebase.firebase_FireStore)
+}
