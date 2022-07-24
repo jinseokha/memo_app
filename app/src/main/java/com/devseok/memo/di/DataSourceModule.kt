@@ -1,8 +1,8 @@
 package com.devseok.memo.di
 
-import com.devseok.data.repository.remote.datasource.MainDataSource
+import com.devseok.data.repository.remote.datasource.NoticeDataSource
 import com.devseok.data.repository.remote.datasource.SettingDataSource
-import com.devseok.data.repository.remote.datasourceImpl.MainDataSourceImpl
+import com.devseok.data.repository.remote.datasourceImpl.NoticeDataSourceImpl
 import com.devseok.data.repository.remote.datasourceImpl.SettingDataSourceImpl
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.firestore.FirebaseFirestore
@@ -30,6 +30,17 @@ class DataSourceModule {
         firebaseStore : FirebaseFirestore
     ) : SettingDataSource {
         return SettingDataSourceImpl(
+            firebaseRTDB, firebaseStore
+        )
+    }
+
+    @Provides
+    @Singleton
+    fun provideNoticeDataSource(
+        firebaseRTDB: FirebaseDatabase,
+        firebaseStore: FirebaseFirestore
+    ) : NoticeDataSource {
+        return NoticeDataSourceImpl(
             firebaseRTDB, firebaseStore
         )
     }

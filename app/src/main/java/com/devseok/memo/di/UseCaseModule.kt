@@ -1,8 +1,9 @@
 package com.devseok.memo.di
 
-import com.devseok.domain.repository.MainRepository
+import com.devseok.domain.repository.NoticeRepository
 import com.devseok.domain.repository.SettingRepository
 import com.devseok.domain.usecase.CheckAppVersionUseCase
+import com.devseok.domain.usecase.NoticeUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -22,4 +23,9 @@ class UseCaseModule {
     @Singleton
     fun provideCheckAppVersionUseCase(repository: SettingRepository)
             = CheckAppVersionUseCase(repository)
+
+    @Provides
+    @Singleton
+    fun provideNoticeUseCase(repository: NoticeRepository)
+            = NoticeUseCase(repository)
 }

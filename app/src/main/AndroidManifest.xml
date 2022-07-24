@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Memo">
         <activity
-            android:name=".view.UpdateRecoredActivity"
+            android:name=".view.NoticeActivity"
             android:exported="true" />
         <activity
             android:name=".view.OpenLicenseActivity"

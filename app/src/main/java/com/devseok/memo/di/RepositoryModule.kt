@@ -1,10 +1,10 @@
 package com.devseok.memo.di
 
-import com.devseok.data.repository.MainRepositoryImpl
+import com.devseok.data.repository.NoticeRepositoryImpl
 import com.devseok.data.repository.SettingRepositoryImpl
-import com.devseok.data.repository.remote.datasource.MainDataSource
+import com.devseok.data.repository.remote.datasource.NoticeDataSource
 import com.devseok.data.repository.remote.datasource.SettingDataSource
-import com.devseok.domain.repository.MainRepository
+import com.devseok.domain.repository.NoticeRepository
 import com.devseok.domain.repository.SettingRepository
 import dagger.Module
 import dagger.Provides
@@ -30,6 +30,16 @@ class RepositoryModule {
     ) : SettingRepository {
         return SettingRepositoryImpl (
             settingDataSource
+        )
+    }
+
+    @Provides
+    @Singleton
+    fun provideNoticeRepository (
+        noticeDataSource: NoticeDataSource
+    ) : NoticeRepository {
+        return NoticeRepositoryImpl (
+            noticeDataSource
         )
     }
 }

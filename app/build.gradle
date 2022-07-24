@@ -85,6 +85,11 @@ dependencies {
     implementation (Custom.colorPicker)
     implementation (Custom.circleImage)
 
+    // Retrofit
+    implementation (Retrofit.RETROFIT)
+    implementation (Retrofit.CONVERTER_GSON)
+    implementation (Retrofit.CONVERTER_JAXB)
+
     // Firebase
     implementation platform (Firebase.firebase_Bom)
     implementation (Firebase.firebase_Crashlytics)

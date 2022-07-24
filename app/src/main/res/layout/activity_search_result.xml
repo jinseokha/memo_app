@@ -22,7 +22,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
-            android:src="@drawable/ic_baseline_arrow_back_24" />
+            android:src="@drawable/ic_btn_icon_arrow" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_result"

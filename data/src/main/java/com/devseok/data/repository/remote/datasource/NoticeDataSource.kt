@@ -7,11 +7,10 @@ import com.google.firebase.firestore.QuerySnapshot
 /**
  * @author Ha Jin Seok
  * @email seok270@gmail.com
- * @created 2022-07-13
+ * @created 2022-07-20
  * @desc
  */
-interface SettingDataSource {
-    // 앱 최신 버전 가져오기
-    fun checkAppVersion() : Task<DataSnapshot>
+interface NoticeDataSource {
 
+    fun getNotice() : Task<QuerySnapshot>
 }

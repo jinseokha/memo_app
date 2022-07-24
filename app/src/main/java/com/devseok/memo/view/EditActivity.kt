@@ -2,7 +2,6 @@ package com.devseok.memo.view
 
 import android.graphics.Color
 import android.graphics.Color.parseColor
-import android.graphics.Color.red
 import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.GradientDrawable
 import android.util.Log
@@ -20,7 +19,6 @@ import com.devseok.memo.R
 import com.devseok.memo.base.BaseActivity
 import com.devseok.memo.databinding.ActivityEditBinding
 import com.devseok.memo.viewmodel.EditViewModel
-import com.devseok.memo.widget.utils.CustomBar
 import com.github.dhaval2404.colorpicker.ColorPickerDialog
 import com.github.dhaval2404.colorpicker.model.ColorShape
 import com.google.android.gms.ads.AdListener
@@ -28,8 +26,6 @@ import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.LoadAdError
 import dagger.hilt.android.AndroidEntryPoint
 import java.text.SimpleDateFormat
-import java.time.LocalDateTime
-import java.time.format.DateTimeFormatter
 
 @AndroidEntryPoint
 class EditActivity : BaseActivity<ActivityEditBinding>(R.layout.activity_edit) {

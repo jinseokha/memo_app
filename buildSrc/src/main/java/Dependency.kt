@@ -44,6 +44,12 @@ object ROOM {
     const val ROOM_KTX = "androidx.room:room-ktx:${Versions.ROOM_DB}"
 }
 
+object Retrofit {
+    const val RETROFIT = "com.squareup.retrofit2:retrofit:2.9.0"
+    const val CONVERTER_GSON = "com.squareup.retrofit2:converter-gson:2.9.0"
+    const val CONVERTER_JAXB = "com.squareup.retrofit2:converter-jaxb:2.9.0"
+}
+
 object Custom {
     const val colorPicker = "com.github.dhaval2404:colorpicker:2.0"
     const val circleImage = "de.hdodenhof:circleimageview:3.1.0"

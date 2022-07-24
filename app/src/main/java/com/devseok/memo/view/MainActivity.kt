@@ -1,17 +1,16 @@
 package com.devseok.memo.view
 
-import android.animation.ObjectAnimator
-import android.content.Intent
-import android.net.Uri
 import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.devseok.data.model.Memo
 import com.devseok.memo.R
 import com.devseok.memo.adapter.MemoAdapter
+import com.devseok.memo.adapter.MemoStaggeredAdapter
 import com.devseok.memo.base.BaseActivity
 import com.devseok.memo.databinding.ActivityMainBinding
 import com.devseok.memo.viewmodel.MainViewModel
@@ -27,6 +26,8 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
     private val mainViewModel by viewModels<MainViewModel>()
 
     private lateinit var memoAdapter: MemoAdapter
+    private lateinit var memoStaggeredAdapter: MemoStaggeredAdapter
+
     private lateinit var memoList : MutableList<Memo>
 
     private var waitTime = 0L
@@ -106,9 +107,13 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
     }
 
     private fun initRecyclerView() {
-        memoAdapter = MemoAdapter(this, memoList, mainViewModel)
+        memoStaggeredAdapter = MemoStaggeredAdapter(this, memoList, mainViewModel)
+        binding.recyclerView.adapter = memoStaggeredAdapter
+        binding.recyclerView.layoutManager = StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL)
+
+        /*memoAdapter = MemoAdapter(this, memoList, mainViewModel)
         binding.recyclerView.adapter = memoAdapter
-        binding.recyclerView.layoutManager = LinearLayoutManager(baseContext)
+        binding.recyclerView.layoutManager = LinearLayoutManager(baseContext)*/
     }
 
     private fun initListener() {

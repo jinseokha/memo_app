@@ -11,27 +11,26 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.devseok.data.model.Memo
 import com.devseok.memo.R
-import com.devseok.memo.databinding.ItemHolderBinding
+import com.devseok.memo.databinding.ItemGridHolderBinding
 import com.devseok.memo.view.MemoEditActivity
 import com.devseok.memo.viewmodel.MainViewModel
 
 /**
  * @author Ha Jin Seok
- * @email seok270@gmail.com
- * @created 2022-05-10
+ * @email seok270@dahami.com
+ * @created 2022-07-21
  * @desc
  */
-class MemoAdapter(val activity : Activity, val itemList : MutableList<Memo>,
-                  val mainViewModel : MainViewModel) : RecyclerView.Adapter<MemoAdapter.ViewHolder>() {
+class MemoStaggeredAdapter (val activity : Activity, val itemList : MutableList<Memo>,
+                            val mainViewModel : MainViewModel
+) : RecyclerView.Adapter<MemoStaggeredAdapter.ViewHolder>() {
 
-    var lastEditidx : Int = -1
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val binding = ItemHolderBinding.inflate(LayoutInflater.from(activity), parent, false)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MemoStaggeredAdapter.ViewHolder {
+        val binding = ItemGridHolderBinding.inflate(LayoutInflater.from(activity), parent, false)
         return ViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: MemoStaggeredAdapter.ViewHolder, position: Int) {
         val item = itemList[position]
         holder.bind(item)
     }
@@ -40,15 +39,13 @@ class MemoAdapter(val activity : Activity, val itemList : MutableList<Memo>,
         return itemList.size
     }
 
-    inner class ViewHolder(val binding : ItemHolderBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class ViewHolder(val binding : ItemGridHolderBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item : Memo) {
 
             if (item.secretMode) {
-                binding.layoutLock.visibility = View.VISIBLE
                 binding.textViewContent.visibility = View.GONE
                 binding.textViewTime.visibility = View.GONE
             } else {
-                binding.layoutLock.visibility = View.GONE
                 binding.textViewContent.visibility = View.VISIBLE
                 binding.textViewTime.visibility = View.VISIBLE
             }
@@ -58,7 +55,7 @@ class MemoAdapter(val activity : Activity, val itemList : MutableList<Memo>,
 
             var drawable_color = ContextCompat.getDrawable(activity, R.drawable.ic_menu_background) as GradientDrawable?
             drawable_color!!.setColor(Color.parseColor(item.color))
-            binding.imgColor.setImageDrawable(drawable_color)
+
 
             binding.layoutAll.setOnClickListener {
                 val intent = Intent(activity, MemoEditActivity::class.java)
