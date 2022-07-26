@@ -20,12 +20,19 @@
         android:background="@drawable/grid_background_round"
         android:layout_margin="5dp">
 
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/img_color"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:background="@drawable/ic_menu_grid_background"/>
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_below="@id/img_color"
+                android:layout_toRightOf="@id/img_color"
                 android:paddingLeft="5dp"
                 android:paddingRight="5dp"
-                android:paddingTop="7dp"
                 android:paddingBottom="7dp">
 
                 <TextView

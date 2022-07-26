@@ -20,4 +20,10 @@ class Preferences(context : Context) {
         set(value) {
             prefs.edit().putBoolean("isDarkModeEnabled", value).apply()
         }
+
+    var isListVerticalMode : Boolean
+        get() = prefs.getBoolean("isListVerticalMode", true)
+        set(value) {
+            prefs.edit().putBoolean("isListVerticalMode", value).apply()
+        }
 }

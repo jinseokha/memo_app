@@ -1,9 +1,11 @@
 package com.devseok.memo.adapter
 
 import android.app.Activity
+import android.content.ContentValues.TAG
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.GradientDrawable
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,10 +16,13 @@ import com.devseok.memo.R
 import com.devseok.memo.databinding.ItemGridHolderBinding
 import com.devseok.memo.view.MemoEditActivity
 import com.devseok.memo.viewmodel.MainViewModel
+import java.text.ParseException
+import java.text.SimpleDateFormat
+import java.util.*
 
 /**
  * @author Ha Jin Seok
- * @email seok270@dahami.com
+ * @email seok270@gmail.com
  * @created 2022-07-21
  * @desc
  */
@@ -51,10 +56,18 @@ class MemoStaggeredAdapter (val activity : Activity, val itemList : MutableList<
             }
 
             binding.textViewContent.text = item.memo
-            binding.textViewTime.text = item.update_time
+            //binding.textViewTime.text = item.update_time
 
-            var drawable_color = ContextCompat.getDrawable(activity, R.drawable.ic_menu_background) as GradientDrawable?
+            // SimpleDateFormat("yyyy.MM.dd.(EE) a hh:mm")
+            var date_before : String = item.update_time
+            var date_after : String? = formateDateFromstring("yyyy.MM.dd.(EE) a hh:mm",
+                "yy.MM.dd. a hh:mm", date_before)
+
+            binding.textViewTime.text = date_after
+
+            var drawable_color = ContextCompat.getDrawable(activity, R.drawable.ic_menu_grid_background) as GradientDrawable?
             drawable_color!!.setColor(Color.parseColor(item.color))
+            binding.imgColor.setImageDrawable(drawable_color)
 
 
             binding.layoutAll.setOnClickListener {
@@ -65,5 +78,23 @@ class MemoStaggeredAdapter (val activity : Activity, val itemList : MutableList<
                 activity.overridePendingTransition(R.anim.anim_slide_in_left, R.anim.anim_slide_out_left)
             }
         }
+    }
+
+    fun formateDateFromstring(
+        inputFormat: String?,
+        outputFormat: String?,
+        inputDate: String?
+    ): String? {
+        var parsed: Date? = null
+        var outputDate = ""
+        val df_input = SimpleDateFormat(inputFormat, Locale.getDefault())
+        val df_output = SimpleDateFormat(outputFormat, Locale.getDefault())
+        try {
+            parsed = df_input.parse(inputDate)
+            outputDate = df_output.format(parsed)
+        } catch (e: ParseException) {
+
+        }
+        return outputDate
     }
 }

@@ -38,7 +38,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
 
         MobileAds.initialize(this) { }
 
-        getMemo()
         initObserver()
         initListener()
         adb()
@@ -59,6 +58,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
 
     override fun onResume() {
         super.onResume()
+        getMemo()
         binding.adView.resume()
     }
 
@@ -107,13 +107,15 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
     }
 
     private fun initRecyclerView() {
-        memoStaggeredAdapter = MemoStaggeredAdapter(this, memoList, mainViewModel)
-        binding.recyclerView.adapter = memoStaggeredAdapter
-        binding.recyclerView.layoutManager = StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL)
-
-        /*memoAdapter = MemoAdapter(this, memoList, mainViewModel)
-        binding.recyclerView.adapter = memoAdapter
-        binding.recyclerView.layoutManager = LinearLayoutManager(baseContext)*/
+        if (prefs.isListVerticalMode) {
+            memoAdapter = MemoAdapter(this, memoList, mainViewModel)
+            binding.recyclerView.adapter = memoAdapter
+            binding.recyclerView.layoutManager = LinearLayoutManager(baseContext)
+        } else {
+            memoStaggeredAdapter = MemoStaggeredAdapter(this, memoList, mainViewModel)
+            binding.recyclerView.adapter = memoStaggeredAdapter
+            binding.recyclerView.layoutManager = StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL)
+        }
     }
 
     private fun initListener() {

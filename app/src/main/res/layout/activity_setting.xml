@@ -113,20 +113,20 @@
                 android:orientation="horizontal">
 
                 <RadioButton
-                    android:id="@+id/radioAndroid"
+                    android:id="@+id/radioVertical"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:background="@drawable/rbtn_selector"
                     android:button="@null"
-                    android:checked="true"
                     android:gravity="center"
                     android:padding="5dp"
                     android:text="세로"
-                    android:textColor="@drawable/rbtn" />
+                    android:textColor="@drawable/rbtn"
+                    android:onClick="@{activity::clickVertical}"/>
 
                 <RadioButton
-                    android:id="@+id/radioiPhone"
+                    android:id="@+id/radioGrid"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -135,7 +135,8 @@
                     android:gravity="center"
                     android:padding="5dp"
                     android:text="그리드"
-                    android:textColor="@drawable/rbtn" />
+                    android:textColor="@drawable/rbtn"
+                    android:onClick="@{activity::clickVertical}"/>
 
             </RadioGroup>
 

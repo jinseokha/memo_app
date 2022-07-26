@@ -25,6 +25,7 @@ class SettingActivity : BaseActivity<ActivitySettingBinding>(R.layout.activity_s
 
         appVersionChecking()
         initListener()
+        getClick()
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -37,6 +38,16 @@ class SettingActivity : BaseActivity<ActivitySettingBinding>(R.layout.activity_s
 
     override fun onBackPressed() {
         withFinish()
+    }
+
+    private fun getClick() {
+        if (prefs.isListVerticalMode) {
+            binding.radioVertical.isChecked = true
+            binding.radioGrid.isChecked = false
+        } else {
+            binding.radioVertical.isChecked = false
+            binding.radioGrid.isChecked = true
+        }
     }
 
     private fun initListener() {
@@ -103,6 +114,13 @@ class SettingActivity : BaseActivity<ActivitySettingBinding>(R.layout.activity_s
                 Uri.parse("https://play.google.com/store/apps/details?id=" + packageName))
             )
             overridePendingTransition(R.anim.anim_slide_in_left, R.anim.anim_slide_out_left)
+        }
+    }
+
+    fun clickVertical(view : View) {
+        when(view.id) {
+            R.id.radioVertical -> prefs.isListVerticalMode = true
+            R.id.radioGrid -> prefs.isListVerticalMode = false
         }
     }
 
