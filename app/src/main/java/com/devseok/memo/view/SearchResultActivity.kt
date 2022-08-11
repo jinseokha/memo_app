@@ -2,11 +2,14 @@ package com.devseok.memo.view
 
 import android.util.Log
 import android.view.MenuItem
+import android.view.View
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.devseok.data.model.Memo
 import com.devseok.memo.R
 import com.devseok.memo.adapter.SearchResultAdapter
+import com.devseok.memo.adapter.SearchStaggeredAdapter
 import com.devseok.memo.base.BaseActivity
 import com.devseok.memo.databinding.ActivitySearchResultBinding
 import com.devseok.memo.viewmodel.SearchResultViewModel
@@ -86,8 +89,30 @@ class SearchResultActivity : BaseActivity<ActivitySearchResultBinding>(R.layout.
     }
 
     private fun initRecyclerView(memo : MutableList<Memo>) {
-        var searchResultAdapter = SearchResultAdapter(this, memo, searchResultViewModel)
-        binding.recyclerView.adapter = searchResultAdapter
-        binding.recyclerView.layoutManager = LinearLayoutManager(baseContext)
+        if (prefs.isListVerticalMode) {
+            if (memo.size == 0) {
+                binding.recyclerView.visibility = View.GONE
+                binding.tvMemo.visibility = View.VISIBLE
+            } else {
+                binding.recyclerView.visibility = View.VISIBLE
+                binding.tvMemo.visibility = View.GONE
+
+                var searchResultAdapter = SearchResultAdapter(this, memo, searchResultViewModel)
+                binding.recyclerView.adapter = searchResultAdapter
+                binding.recyclerView.layoutManager = LinearLayoutManager(baseContext)
+            }
+        } else {
+            if (memo.size == 0) {
+                binding.recyclerView.visibility = View.GONE
+                binding.tvMemo.visibility = View.VISIBLE
+            } else {
+                binding.recyclerView.visibility = View.VISIBLE
+                binding.tvMemo.visibility = View.GONE
+
+                var searchStaggeredAdapter = SearchStaggeredAdapter(this, memo, searchResultViewModel)
+                binding.recyclerView.adapter = searchStaggeredAdapter
+                binding.recyclerView.layoutManager = StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL)
+            }
+        }
     }
 }

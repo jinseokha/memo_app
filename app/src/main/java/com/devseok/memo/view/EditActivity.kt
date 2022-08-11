@@ -21,9 +21,6 @@ import com.devseok.memo.databinding.ActivityEditBinding
 import com.devseok.memo.viewmodel.EditViewModel
 import com.github.dhaval2404.colorpicker.ColorPickerDialog
 import com.github.dhaval2404.colorpicker.model.ColorShape
-import com.google.android.gms.ads.AdListener
-import com.google.android.gms.ads.AdRequest
-import com.google.android.gms.ads.LoadAdError
 import dagger.hilt.android.AndroidEntryPoint
 import java.text.SimpleDateFormat
 
@@ -38,7 +35,6 @@ class EditActivity : BaseActivity<ActivityEditBinding>(R.layout.activity_edit) {
 
         initListener()
         initObserver()
-        adb()
         selectColor(fiXcolor)
     }
 
@@ -65,36 +61,6 @@ class EditActivity : BaseActivity<ActivityEditBinding>(R.layout.activity_edit) {
         } else {
             finish()
             overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_slide_out_right)
-        }
-    }
-
-    private fun adb() {
-        val adRequest = AdRequest.Builder().build()
-        binding.adView.loadAd(adRequest)
-
-        binding.adView.adListener = object : AdListener() {
-            override fun onAdLoaded() {
-                // Code to be executed when an ad finishes loading.
-            }
-
-            override fun onAdFailedToLoad(adError : LoadAdError) {
-                // Code to be executed when an ad request fails.
-                Log.d("test", "" + adError)
-            }
-
-            override fun onAdOpened() {
-                // Code to be executed when an ad opens an overlay that
-                // covers the screen.
-            }
-
-            override fun onAdClicked() {
-                // Code to be executed when the user clicks on an ad.
-            }
-
-            override fun onAdClosed() {
-                // Code to be executed when the user is about to return
-                // to the app after tapping on an ad.
-            }
         }
     }
 

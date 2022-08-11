@@ -62,13 +62,31 @@
             android:layout_toLeftOf="@id/iv_add"
             android:src="@drawable/baseline_search_24" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView"
+        <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_above="@id/adView"
             android:layout_below="@id/iv_search"
-            android:layout_marginTop="18dp" />
+            android:layout_marginTop="18dp">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="visible" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_memo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textSize="16sp"
+                android:textColor="@color/text_black"
+                android:text="작성된 메모가 없습니다.\n메모를 추가해주세요."
+                android:visibility="gone"/>
+        </FrameLayout>
+
 
         <com.google.android.gms.ads.AdView
             android:id="@+id/adView"

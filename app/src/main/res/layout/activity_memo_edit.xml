@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
@@ -63,7 +62,6 @@
             android:layout_height="match_parent"
             android:visibility="gone"
             android:layout_below="@id/imageView_back"
-            android:layout_above="@id/adView"
             android:layout_marginTop="20dp"
             android:background="@drawable/gray_background">
 
@@ -105,7 +103,7 @@
             android:id="@+id/edt_count"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_above="@id/adView"
+            android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
             android:paddingLeft="15dp"
             android:paddingRight="20dp"
@@ -113,15 +111,6 @@
             android:text="0 / 100"
             android:textColor="@color/text_gray"
             android:textSize="14sp" />
-
-        <com.google.android.gms.ads.AdView
-            android:id="@+id/adView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            app:adSize="BANNER"
-            app:adUnitId="@string/adView" />
 
     </RelativeLayout>
 </layout>

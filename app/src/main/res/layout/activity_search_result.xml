@@ -30,16 +30,36 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:textSize="16sp"
-            android:textColor="@color/black"
+            android:textColor="@color/text_black"
             android:layout_toRightOf="@id/iv_back"/>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView"
+        <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@id/iv_back"
             android:layout_above="@id/adView"
-            android:layout_marginTop="15dp"/>
+            android:layout_below="@id/tv_result"
+            android:layout_marginTop="18dp">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/iv_back"
+                android:layout_above="@id/adView"
+                android:layout_marginTop="15dp"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_memo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textSize="16sp"
+                android:textColor="@color/text_black"
+                android:text="검색된 메모가 없습니다."
+                android:visibility="gone"/>
+        </FrameLayout>
+
 
         <com.google.android.gms.ads.AdView
             android:id="@+id/adView"

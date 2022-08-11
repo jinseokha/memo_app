@@ -64,15 +64,16 @@
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_above="@id/adView"
-            android:layout_below="@id/layout_search" />
+            android:layout_below="@id/adView" />
 
         <com.google.android.gms.ads.AdView
             android:id="@+id/adView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
+            android:layout_below="@id/layout_search"
             android:layout_centerHorizontal="true"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
             app:adSize="BANNER"
             app:adUnitId="@string/adView" />
 

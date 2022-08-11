@@ -15,13 +15,16 @@
         android:theme="@style/Theme.Memo">
         <activity
             android:name=".view.NoticeActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:windowSoftInputMode="adjustResize"/>
         <activity
             android:name=".view.OpenLicenseActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:windowSoftInputMode="adjustResize"/>
         <activity
             android:name=".view.SettingActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:windowSoftInputMode="adjustResize"/>
 
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
@@ -29,19 +32,24 @@
 
         <activity
             android:name=".view.SearchResultActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:windowSoftInputMode="adjustResize"/>
         <activity
             android:name=".view.SearchActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:windowSoftInputMode="adjustResize"/>
         <activity
             android:name=".view.MemoEditActivity"
+            android:windowSoftInputMode="stateHidden|adjustResize"
             android:exported="true" />
         <activity
             android:name=".view.EditActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:windowSoftInputMode="adjustResize"/>
         <activity
             android:name=".view.MainActivity"
-            android:exported="true">
+            android:exported="true"
+            android:windowSoftInputMode="adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

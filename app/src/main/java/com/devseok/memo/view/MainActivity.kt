@@ -108,13 +108,29 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
 
     private fun initRecyclerView() {
         if (prefs.isListVerticalMode) {
-            memoAdapter = MemoAdapter(this, memoList, mainViewModel)
-            binding.recyclerView.adapter = memoAdapter
-            binding.recyclerView.layoutManager = LinearLayoutManager(baseContext)
+            if (memoList.size == 0) {
+                binding.recyclerView.visibility = View.GONE
+                binding.tvMemo.visibility = View.VISIBLE
+            } else {
+                binding.recyclerView.visibility = View.VISIBLE
+                binding.tvMemo.visibility = View.GONE
+
+                memoAdapter = MemoAdapter(this, memoList, mainViewModel)
+                binding.recyclerView.adapter = memoAdapter
+                binding.recyclerView.layoutManager = LinearLayoutManager(baseContext)
+            }
         } else {
-            memoStaggeredAdapter = MemoStaggeredAdapter(this, memoList, mainViewModel)
-            binding.recyclerView.adapter = memoStaggeredAdapter
-            binding.recyclerView.layoutManager = StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL)
+            if (memoList.size == 0) {
+                binding.recyclerView.visibility = View.GONE
+                binding.tvMemo.visibility = View.VISIBLE
+            } else {
+                binding.recyclerView.visibility = View.VISIBLE
+                binding.tvMemo.visibility = View.GONE
+
+                memoStaggeredAdapter = MemoStaggeredAdapter(this, memoList, mainViewModel)
+                binding.recyclerView.adapter = memoStaggeredAdapter
+                binding.recyclerView.layoutManager = StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL)
+            }
         }
     }
 

@@ -13,27 +13,27 @@ import com.devseok.data.model.Memo
 import com.devseok.memo.R
 import com.devseok.memo.databinding.ItemGridHolderBinding
 import com.devseok.memo.view.MemoEditActivity
-import com.devseok.memo.viewmodel.MainViewModel
+import com.devseok.memo.viewmodel.SearchResultViewModel
 import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
 
 /**
  * @author Ha Jin Seok
- * @email seok270@gmail.com
- * @created 2022-07-21
+ * @email seok270@dahami.com
+ * @created 2022-08-05
  * @desc
  */
-class MemoStaggeredAdapter (val activity : Activity, val itemList : MutableList<Memo>,
-                            val mainViewModel : MainViewModel
-) : RecyclerView.Adapter<MemoStaggeredAdapter.ViewHolder>() {
+class SearchStaggeredAdapter(val activity : Activity, val itemList : MutableList<Memo>,
+                             val searchResultViewModel: SearchResultViewModel
+) : RecyclerView.Adapter<SearchStaggeredAdapter.ViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MemoStaggeredAdapter.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding = ItemGridHolderBinding.inflate(LayoutInflater.from(activity), parent, false)
         return ViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: MemoStaggeredAdapter.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = itemList[position]
         holder.bind(item)
     }

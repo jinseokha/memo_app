@@ -23,9 +23,6 @@ import com.devseok.memo.databinding.ActivityMemoEditBinding
 import com.devseok.memo.viewmodel.MemoEditViewModel
 import com.github.dhaval2404.colorpicker.ColorPickerDialog
 import com.github.dhaval2404.colorpicker.model.ColorShape
-import com.google.android.gms.ads.AdListener
-import com.google.android.gms.ads.AdRequest
-import com.google.android.gms.ads.LoadAdError
 import dagger.hilt.android.AndroidEntryPoint
 import java.text.SimpleDateFormat
 
@@ -50,7 +47,7 @@ class MemoEditActivity : BaseActivity<ActivityMemoEditBinding>(R.layout.activity
         initListener()
         initObserver()
         lockicon()
-        adb()
+
         fiXcolor = memo.color
         selectColor(fiXcolor)
     }
@@ -65,36 +62,6 @@ class MemoEditActivity : BaseActivity<ActivityMemoEditBinding>(R.layout.activity
 
     override fun onBackPressed() {
         withFinish()
-    }
-
-    private fun adb() {
-        val adRequest = AdRequest.Builder().build()
-        binding.adView.loadAd(adRequest)
-
-        binding.adView.adListener = object : AdListener() {
-            override fun onAdLoaded() {
-                // Code to be executed when an ad finishes loading.
-            }
-
-            override fun onAdFailedToLoad(adError : LoadAdError) {
-                // Code to be executed when an ad request fails.
-                Log.d("test", "" + adError)
-            }
-
-            override fun onAdOpened() {
-                // Code to be executed when an ad opens an overlay that
-                // covers the screen.
-            }
-
-            override fun onAdClicked() {
-                // Code to be executed when the user clicks on an ad.
-            }
-
-            override fun onAdClosed() {
-                // Code to be executed when the user is about to return
-                // to the app after tapping on an ad.
-            }
-        }
     }
 
     private fun secretMode() {

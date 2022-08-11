@@ -39,6 +39,7 @@
             android:layout_height="40dp"
             android:layout_below="@id/imageView_back"
             android:layout_marginTop="30dp"
+            android:visibility="gone"
             android:onClick="@{activity::updateHistory}">
 
             <androidx.appcompat.widget.AppCompatTextView
@@ -222,6 +223,7 @@
             android:layout_height="40dp"
             android:layout_below="@id/layout_contact"
             android:layout_marginTop="20dp"
+            android:visibility="gone"
             android:onClick="@{activity::openLicenseActivity}">
 
             <androidx.appcompat.widget.AppCompatTextView
