@@ -2,10 +2,12 @@ package com.devseok.memo.view
 
 import android.content.Intent
 import android.net.Uri
+import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import android.widget.CompoundButton
 import androidx.activity.viewModels
+import com.devseok.memo.BuildConfig
 import com.devseok.memo.R
 import com.devseok.memo.base.BaseActivity
 import com.devseok.memo.databinding.ActivitySettingBinding
@@ -17,7 +19,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class SettingActivity : BaseActivity<ActivitySettingBinding>(R.layout.activity_setting) {
     private val settingViewModel by viewModels<SettingViewModel>()
 
-    private val appVersion = "1.0.0"
+    private var appVersion = "1.0.0"
     private var isLatestUpdateCheck = false
 
     override fun init() {
@@ -64,6 +66,9 @@ class SettingActivity : BaseActivity<ActivitySettingBinding>(R.layout.activity_s
     private fun appVersionChecking() {
         settingViewModel.checkAppVersion()
             .addOnSuccessListener {
+                appVersion = BuildConfig.VERSION_NAME
+                Log.d("testtest", "appverison : " + appVersion)
+                Log.d("testtest", "value : " + it.value)
                 if (appVersion == it.value) {
                     binding.tvVersion.text = "최신 버전"
                     isLatestUpdateCheck = true
