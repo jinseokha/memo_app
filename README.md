@@ -1,3 +1,4 @@
+
 # 🙌 간단 메모장
 
 
@@ -21,12 +22,17 @@
 https://play.google.com/store/apps/details?id=com.devseok.memo
 
 ## 개발 기간
-**2022.05.04 ~**
+### 2022.05.04 ~ 2022.08.12
 
 ## 적용 스택
-> **Language**
-> * Kotlin
-> * 
+ **Language**
+ * Kotlin
+ * MVVM 
+ * Hilt
+ * Clean Architecture
+ * Databinding
+ * Room DB
+ * Firebase (Crashlytics, Database, FireStore)
 
 ## 앱 지원 버전
 - minSdkVersion : 23
